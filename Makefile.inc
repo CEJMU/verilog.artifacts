@@ -1,11 +1,11 @@
 .DEFAULT_GOAL := all
 
-simulation: $(FILE).v $(FILE)_tb.v
-	iverilog -o test_pre $(FILE).v $(FILE)_tb.v
+simulation: $(FILE).sv $(FILE)_tb.sv
+	iverilog -o test_pre $(FILE).sv $(FILE)_tb.sv
 	vvp test_pre
 
-synthesis: $(FILE).v
-	yosys -p '$(TARGET) -top $(FILE); write_json $(FILE).json; show -format svg -prefix $(FILE)_yosys;' $(FILE).v
+synthesis: $(FILE).sv
+	yosys -p '$(TARGET) -top $(FILE); write_json $(FILE).json; show -format svg -prefix $(FILE)_yosys;' $(FILE).sv
 
 visualize:
 	sed -i -e 's/inout/output/g' $(FILE).json
@@ -21,4 +21,4 @@ pr:
 all: simulation synthesis visualize
 
 clean:
-	rm -f test_pre $(FILE).json* $(FILE).pdf $(FILE).svg $(FILE)_yosys.svg $(FILE)_yosys.dot $(FILE)-routed.svg $(FILE)-routed.pdf $(FILE)-routed.png
+	rm -f test_pre $(FILE).vcd $(FILE).json* $(FILE).pdf $(FILE).svg $(FILE)_yosys.svg $(FILE)_yosys.dot $(FILE)-routed.svg $(FILE)-routed.pdf $(FILE)-routed.png
