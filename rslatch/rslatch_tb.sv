@@ -1,3 +1,5 @@
+`timescale 1ns/1ns
+
 module testbench;
     logic r, s; // inputs
     logic q, n; // output
