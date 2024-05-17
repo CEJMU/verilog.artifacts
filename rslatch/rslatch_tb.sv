@@ -19,5 +19,7 @@ module testbench;
         s <= 0;
         r <= 0;
         #10;
+        assert (q == 1) else $error ("q!=1");
+        assert (n == 0) else $error ("n!=0");
     end
 endmodule

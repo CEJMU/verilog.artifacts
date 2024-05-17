@@ -20,5 +20,6 @@ module testbench;
         c <= 0;
         d <= 1;
         #10;
+        assert(y==a) else $error("y not equal a");
     end
 endmodule
