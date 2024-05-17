@@ -1,0 +1,17 @@
+digraph "rslatch" {
+label="rslatch";
+rankdir="LR";
+remincross=true;
+n1 [ shape=octagon, label="n", color="black", fontcolor="black" ];
+n2 [ shape=octagon, label="q", color="black", fontcolor="black" ];
+n3 [ shape=octagon, label="r", color="black", fontcolor="black" ];
+n4 [ shape=octagon, label="s", color="black", fontcolor="black" ];
+c8 [ shape=record, label="{{<p5> A|<p6> B}|$88\n$_NOR_|{<p7> Y}}",  ];
+c9 [ shape=record, label="{{<p5> A|<p6> B}|$89\n$_NAND_|{<p7> Y}}",  ];
+c9:p7:e -> n1:w [color="black", fontcolor="black", label=""];
+c8:p7:e -> n2:w [color="black", fontcolor="black", label=""];
+n3:e -> c8:p6:w [color="black", fontcolor="black", label=""];
+n3:e -> c9:p6:w [color="black", fontcolor="black", label=""];
+n4:e -> c8:p5:w [color="black", fontcolor="black", label=""];
+n4:e -> c9:p5:w [color="black", fontcolor="black", label=""];
+}
