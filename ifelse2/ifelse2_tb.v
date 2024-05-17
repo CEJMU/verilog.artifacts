@@ -1,5 +1,5 @@
 module testbench;
-    logic a,b,c,d; // inputs
+    reg a,b,c,d; // inputs
     wire y; // output
 
     ifelse2 dut (.a(a), .b(b), .c(c), .d(d), .y(y));
