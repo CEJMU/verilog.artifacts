@@ -1,0 +1,8 @@
+*.json
+*.json-e
+*.pdf
+*.svg
+*.vcd
+*.dot
+test_pre
+.DS_Store

@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := all
 
 simulation: $(FILE).sv $(FILE)_tb.sv
-	iverilog -o test_pre $(FILE).sv $(FILE)_tb.sv
+	iverilog -g2012  -o test_pre $(FILE).sv $(FILE)_tb.sv
 	vvp test_pre
 
 synthesis: $(FILE).sv

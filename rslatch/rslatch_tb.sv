@@ -1,8 +1,6 @@
 module testbench;
-    reg r; // inputs
-    reg s;
-    wire q; // output
-    wire n;
+    logic r, s; // inputs
+    logic q, n; // output
 
     rslatch latch (.s(s), .r(r), .q(q), .n(n));
 
