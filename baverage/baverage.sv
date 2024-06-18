@@ -4,7 +4,7 @@ module baverage (
         output logic y
     );
     
-    logic [1:0] state = 2'b00;
+    logic [1:0] state;// = 2'b00;
 
     // State Calculation
     always_ff @ (posedge clk) begin
