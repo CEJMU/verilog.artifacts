@@ -1,11 +1,11 @@
 .DEFAULT_GOAL := all
 
 simulation: $(FILE).sv $(FILE)_tb.sv
-	iverilog -g2012  -o test_pre $(FILE).sv $(FILE)_tb.sv
+	iverilog -g2012  -o test_pre $(FILE).sv $(FILE)_tb.sv $(MODULES)
 	vvp test_pre
 
 synthesis: $(FILE).sv
-	yosys -p '$(TARGET) -top $(FILE); write_json $(FILE).json; show -format svg -prefix $(FILE)_yosys;' $(FILE).sv
+	yosys -p '$(TARGET) -top $(FILE); write_json $(FILE).json; show -format svg -prefix $(FILE)_yosys $(FILE);' $(FILE).sv $(MODULES)
 
 visualize:
 	sed -i -e 's/inout/output/g' $(FILE).json
