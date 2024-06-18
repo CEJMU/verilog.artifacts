@@ -1,9 +1,12 @@
-module ifelse2 (input logic a,b,c,d, output logic y);
-    always @ (a,b,c,d) begin
+module ifelse2 (
+        input logic a,b,c,d,
+        output logic y
+    );
+    always_comb begin
         if ((c==1) & (d==1)) begin
-            y <= b;
+            y = b;
         end else begin
-            y <= a;
+            y = a;
         end
     end
 endmodule

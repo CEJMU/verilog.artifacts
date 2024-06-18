@@ -5,7 +5,7 @@ simulation: $(FILE).sv $(FILE)_tb.sv
 	vvp test_pre
 
 synthesis: $(FILE).sv
-	yosys -p '$(TARGET) -top $(FILE); write_json $(FILE).json; show -format svg -prefix $(FILE)_yosys $(FILE);' $(FILE).sv $(MODULES)
+	yosys -p '$(TARGET) -top $(FILE); $(OPT); write_json $(FILE).json; show -format svg -prefix $(FILE)_yosys $(FILE);' $(FILE).sv $(MODULES)
 
 visualize:
 	sed -i -e 's/inout/output/g' $(FILE).json
