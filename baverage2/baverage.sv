@@ -10,7 +10,7 @@ module baverage (
     (* fsm_encoding = "binary" *)
     mystate state_q ; // Alter Zustand
 
-    always_ff @ (posedge clk, posedge rst) begin
+    always_ff @ (posedge clk) begin
         if (rst) 
             state_q <= z0;
         else
