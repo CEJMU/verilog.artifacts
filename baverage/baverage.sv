@@ -4,9 +4,9 @@ module baverage (
         output logic y
     );
     
-    logic [1:0] state;// = 2'b00;
+    logic [1:0] state = 2'b00;
 
-    // State Calculation
+    // Delta:
     always_ff @ (posedge clk) begin
         if(x == 2'b00) begin
             state <= state;
@@ -29,10 +29,12 @@ module baverage (
     end
 
     // Lambda:
-    always_ff @ (posedge clk) begin
+    //always_ff @ (posedge clk) begin
+    always_comb begin
         if(state == 2'b11)
-            y <= 1;
+            y = 1;
         else
-            y <= 0;     
+            y = 0;     
     end
+
 endmodule
