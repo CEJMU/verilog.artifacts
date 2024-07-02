@@ -6,3 +6,4 @@
 *.dot
 test_pre
 .DS_Store
+.svlangserver
