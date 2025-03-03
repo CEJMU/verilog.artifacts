@@ -1,25 +1,49 @@
 `timescale 1ns/1ns
 
 module testbench;
-    logic a,b,c,d; // inputs
-    logic y; // output
+    logic [3:0] x,y; // inputs
+    logic [1:0] s; // select bit
+    logic [7:0] z; // output
 
-    ifelse2 dut (.a(a), .b(b), .c(c), .d(d), .y(y));
+    alu dut (.x(x), .y(y), .s(s), .z(z));
 
     initial begin
-        $dumpfile("ifelse2.vcd");
-        $dumpvars(0, dut); // Level 0, All variables of ifelse2
+        $dumpfile("alu.vcd");
+        $dumpvars(0, dut); // Level 0, All variables of alu
 
-        a <= 0;
-        b <= 0;
-        c <= 0;
-        d <= 0;
+        // Addition 4 + 5
+        s <= 2'b00;
+        x <= 4'd4;
+        y <= 5'd5;
         #10;
-        a <= 1;
-        b <= 0;
-        c <= 0;
-        d <= 1;
+        assert(z==8'd9) else $error("z not equal 4 + 5");
+
+        // Subtraction 10 - 2
+        s <= 2'b01;
+        x <= 4'd10;
+        y <= 5'd2;
         #10;
-        assert(y==a) else $error("y not equal a");
+        assert(z==8'd8) else $error("z not equal 10 - 2");
+
+        // Subtraction 3 - 5
+        s <= 2'b01;
+        x <= 4'd3;
+        y <= 5'd5;
+        #10;
+        assert($signed(z)==-2) else $error("z not equal 3 - 5");
+
+        // Multiplication 4 * 7
+        s <= 2'b10;
+        x <= 4'd4;
+        y <= 5'd7;
+        #10;
+        assert(z==8'd28) else $error("z not equal 4 * 7");
+
+        // Redundant case
+        s <= 2'b11;
+        x <= 4'd4;
+        y <= 5'd7;
+        #10;
+        assert(z==4'd0) else $error("z not equal 0");
     end
 endmodule
