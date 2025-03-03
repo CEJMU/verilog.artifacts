@@ -7,6 +7,6 @@ module alu (
         if (s == 2'b00)      z = x+y;
         else if (s == 2'b01) z = x-y;
         else if (s == 2'b10) z = x*y;
-        else                 z = 2'b00;
+        else                 z = 8'b00;
     end
 endmodule
